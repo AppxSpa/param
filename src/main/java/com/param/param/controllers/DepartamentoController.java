@@ -34,7 +34,7 @@ public class DepartamentoController {
         }
     }
 
-     @GetMapping("/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<DepartamentoList> obtenerJerarquia(@PathVariable Long id) {
 
         try {
@@ -43,7 +43,6 @@ public class DepartamentoController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
         }
-
 
     }
 
@@ -57,7 +56,14 @@ public class DepartamentoController {
             return ResponseEntity.badRequest().body(null);
         }
 
-
     }
 
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Object> getDepartamentoById(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(departamentoService.getDepartementoById(id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }

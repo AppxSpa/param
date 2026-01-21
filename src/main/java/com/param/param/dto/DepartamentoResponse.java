@@ -16,6 +16,12 @@ public class DepartamentoResponse {
         this.nombre = nombre;
     }
 
+    public DepartamentoResponse(Long id, String nombre, Long codDEptoSuperior) {
+        this.id = id;
+        this.nombre = nombre;
+        this.codDEptoSuperior = codDEptoSuperior;
+    }
+
     public Long getId() {
         return id;
     }

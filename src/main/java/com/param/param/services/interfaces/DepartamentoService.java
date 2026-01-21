@@ -14,4 +14,6 @@ public interface DepartamentoService {
 
     List<DepartamentoList> getDepartamentosList();
 
+    DepartamentoResponse getDepartementoById(Long id);
+
 }

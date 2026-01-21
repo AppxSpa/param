@@ -11,6 +11,7 @@ import com.param.param.dto.DireccionResponse;
 import com.param.param.dto.PersonaResponse;
 import com.param.param.entities.Departamento;
 import com.param.param.entities.Ubicacion;
+import com.param.param.excpetions.NotFounException;
 import com.param.param.excpetions.UbicacionExceptions;
 import com.param.param.repositories.DepartamentoRepository;
 import com.param.param.repositories.UbicacionRepository;
@@ -104,4 +105,12 @@ public class DepartamentoServiceImpl implements DepartamentoService {
         return dto;
     }
 
-   }
+    @Override
+    public DepartamentoResponse getDepartementoById(Long id) {
+        Departamento departamento = departamentoRepository.findById(id)
+                .orElseThrow(() -> new NotFounException("Departamento no encontrado"));
+
+        return new DepartamentoResponse(departamento.getId(), departamento.getNombreDepartamento(),
+                departamento.getDepartamentoSuperior().getId());
+    }
+}
