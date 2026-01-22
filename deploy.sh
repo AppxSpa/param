@@ -1,3 +1,5 @@
+sudo docker pull mirkogutierrezappx/param:latest
+
 sudo docker stop param-container 2>/dev/null
 sudo docker rm param-container 2>/dev/null
 
@@ -9,6 +11,7 @@ sudo docker run \
            --env-file .env \
            --network appx \
            --add-host=host.docker.internal:host-gateway \
-           --name param-container param
+           --name param-container param \
+    mirkogutierrezappx/param:latest
 
 
